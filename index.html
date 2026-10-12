@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <meta name="description" content="A thoughtful space to track daily habits, personal goals, and the progress you make over time." />
+    <title>Daymark — Make room to grow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#overview" aria-label="Daymark home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span>daymark<span class="brand-period">.</span></span>
+        </a>
+        <div class="sidebar-caption">YOUR SPACE</div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <button class="nav-link active" data-view="overview"><span class="nav-icon">◫</span>Overview</button>
+          <button class="nav-link" data-view="goals"><span class="nav-icon">◎</span>My goals</button>
+          <button class="nav-link" data-view="reports"><span class="nav-icon">▥</span>Reports</button>
+        </nav>
+        <div class="sidebar-note">
+          <div class="note-spark">✳</div><p class="note-label">A little reminder</p>
+          <p class="note-copy">You don't have to see the whole staircase. Just take the next step.</p>
+          <span class="note-byline">MARTIN LUTHER KING JR.</span>
+        </div>
+        <div class="sidebar-footer"><span class="status-dot"></span> Your progress, just for you</div>
+      </aside>
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumb"><span>MY SPACE</span><span class="crumb-divider">/</span><span id="current-section">OVERVIEW</span></div>
+          <div class="topbar-right">
+            <span class="today-label" id="top-date"></span>
+            <div class="settings-wrap">
+              <button class="icon-button settings-trigger" id="settings-toggle" type="button" aria-label="Open settings" aria-expanded="false" aria-controls="settings-panel" title="Appearance settings">⚙</button>
+              <section class="settings-panel" id="settings-panel" aria-label="Appearance settings" hidden>
+                <div class="settings-heading"><div><p class="eyebrow">MAKE IT YOURS</p><h2>Appearance</h2></div><button class="settings-close" id="settings-close" type="button" aria-label="Close settings">×</button></div>
+                <fieldset class="settings-field theme-field">
+                  <legend>Theme</legend>
+                  <div class="theme-options" role="group" aria-label="Theme">
+                    <button class="theme-option" type="button" data-theme-choice="light" aria-pressed="true">☀ Light</button>
+                    <button class="theme-option" type="button" data-theme-choice="dark" aria-pressed="false">☾ Dark</button>
+                  </div>
+                </fieldset>
+                <fieldset class="settings-field">
+                  <legend>Background color</legend>
+                  <div class="background-swatches">
+                    <button class="background-swatch" type="button" data-background="sage" aria-label="Sage background" title="Sage" aria-pressed="true"></button>
+                    <button class="background-swatch" type="button" data-background="sky" aria-label="Sky background" title="Sky" aria-pressed="false"></button>
+                    <button class="background-swatch" type="button" data-background="rose" aria-label="Rose background" title="Rose" aria-pressed="false"></button>
+                    <button class="background-swatch" type="button" data-background="mint" aria-label="Mint background" title="Mint" aria-pressed="false"></button>
+                    <button class="background-swatch" type="button" data-background="lavender" aria-label="Lavender background" title="Lavender" aria-pressed="false"></button>
+                    <button class="background-swatch" type="button" data-background="butter" aria-label="Butter background" title="Butter" aria-pressed="false"></button>
+                    <button class="background-swatch" type="button" data-background="peach" aria-label="Peach background" title="Peach" aria-pressed="false"></button>
+                    <button class="background-swatch" type="button" data-background="slate" aria-label="Slate background" title="Slate" aria-pressed="false"></button>
+                    <button class="background-swatch" type="button" data-background="ice" aria-label="Ice blue background" title="Ice blue" aria-pressed="false"></button>
+                    <button class="background-swatch" type="button" data-background="seafoam" aria-label="Seafoam background" title="Seafoam" aria-pressed="false"></button>
+                  </div>
+                </fieldset>
+                <label class="settings-field settings-select-field" for="font-size-setting"><span>Font size</span><select id="font-size-setting"><option value="small">Small</option><option value="standard">Standard</option><option value="large">Large</option></select></label>
+                <label class="settings-field scale-field" for="scale-setting"><span>Interface scale <output id="scale-value" for="scale-setting">100%</output></span><input id="scale-setting" type="range" min="80" max="120" step="5" value="100" /></label>
+              </section>
+            </div>
+            <span class="avatar" aria-label="Your space">Y</span>
+          </div>
+        </header>
+        <section class="view active" id="overview-view">
+          <div class="welcome-row">
+            <div><p class="eyebrow" id="welcome-date"></p><h1>A good day to <em>grow.</em></h1><p class="subtitle">Small steps count. What would feel good to get done today?</p></div>
+            <button class="button button-dark" id="jump-to-add"><span class="button-plus">+</span> Add an activity</button>
+          </div>
+          <div class="overview-grid">
+            <section class="panel daily-panel">
+              <div class="panel-heading"><div><p class="eyebrow">YOUR DAILY PRACTICE</p><h2>Today's activities</h2></div><span class="count-pill" id="daily-count">0 / 0</span></div>
+              <div class="daily-progress"><span id="daily-progress-fill"></span></div><div class="activity-list" id="activity-list"></div>
+              <form class="inline-add" id="activity-form"><span class="add-mark">+</span><input id="activity-input" type="text" maxlength="90" placeholder="Add a small activity..." aria-label="New activity" required /><button type="submit" aria-label="Add activity">Add</button></form>
+            </section>
+            <section class="panel focus-panel">
+              <div class="panel-heading"><div><p class="eyebrow">YOUR MONTH, IN MOTION</p><h2>A little adds up</h2></div><span class="month-stamp" id="overview-month"></span></div>
+              <div class="mini-chart-row"><div class="pie-wrap"><div class="pie-chart" id="overview-pie"><span id="overview-pie-label">0%</span></div></div><div class="chart-legend"><div><i class="legend-dot done-dot"></i><span>Completed</span><strong id="overview-done">0</strong></div><div><i class="legend-dot open-dot"></i><span>Still open</span><strong id="overview-open">0</strong></div></div></div>
+              <p class="chart-caption">Every checked activity and achieved goal is part of your story.</p><button class="text-link" data-view="reports">See your full report <span>→</span></button>
+            </section>
+            <section class="panel goals-panel">
+              <div class="panel-heading"><div><p class="eyebrow">THINGS YOU'RE WORKING TOWARD</p><h2>My goals</h2></div><button class="icon-button" data-view="goals" aria-label="See all goals" title="See all goals">↗</button></div>
+              <div class="goal-preview-list" id="goal-preview-list"></div><button class="text-link" data-view="goals">View all goals <span>→</span></button>
+            </section>
+            <section class="quote-panel"><span class="quote-mark">“</span><div><p class="quote-text">Great things are done by a series of small things brought together.</p><p class="quote-author">VINCENT VAN GOGH</p></div><span class="quote-flower" aria-hidden="true">✳</span></section>
+          </div>
+        </section>
+        <section class="view" id="goals-view">
+          <div class="page-intro"><p class="eyebrow">THINKING A LITTLE FURTHER AHEAD</p><h1>Make it <em>happen.</em></h1><p class="subtitle">Give your intentions a name, a date, and the space to grow.</p></div>
+          <div class="goal-layout">
+            <section class="panel goals-main-panel"><div class="panel-heading"><div><p class="eyebrow">YOUR MILESTONES</p><h2>Things to achieve</h2></div><span class="count-pill" id="goal-count">0 goals</span></div><div class="goal-list" id="goal-list"></div></section>
+            <aside class="panel goal-form-panel"><p class="eyebrow">A NEW MILESTONE</p><h2>What are you working toward?</h2><form id="goal-form" class="goal-form"><label for="goal-input">Your goal</label><input id="goal-input" type="text" maxlength="100" placeholder="e.g. Finish my first 5K" required /><label for="goal-date">I'd like to achieve it by</label><input id="goal-date" type="date" required /><button class="button button-dark" type="submit">Add to my goals <span>→</span></button></form><div class="goal-form-note"><span>✳</span> Progress isn't always a straight line. Every step still counts.</div></aside>
+          </div>
+        </section>
+        <section class="view" id="reports-view">
+          <div class="page-intro"><p class="eyebrow">PAUSE AND LOOK HOW FAR YOU'VE COME</p><h1>Your progress, <em>over time.</em></h1><p class="subtitle">A record of the little things that are adding up to something big.</p></div>
+          <div class="report-tabs" role="tablist" aria-label="Report period"><button class="report-tab active" data-period="month" role="tab" aria-selected="true">Monthly</button><button class="report-tab" data-period="year" role="tab" aria-selected="false">Yearly</button></div>
+          <section class="report-view active" id="month-report"><div class="report-toolbar"><div><p class="eyebrow">YOUR MONTHLY REPORT</p><h2 id="month-report-title"></h2></div><label class="select-wrap"><span class="sr-only">Choose report month</span><input type="month" id="month-picker" /></label></div>
+            <div class="report-grid"><article class="panel report-chart-panel"><div class="panel-heading"><div><p class="eyebrow">ACTIVITIES & MILESTONES</p><h2>Showing up counts</h2></div></div><div class="large-pie-row"><div class="pie-wrap large-pie-wrap"><div class="pie-chart large-pie" id="month-pie"><span id="month-pie-label">0%</span></div></div><div class="chart-legend large-legend"><div><i class="legend-dot done-dot"></i><span>Completed</span><strong id="month-done">0</strong></div><div><i class="legend-dot open-dot"></i><span>Still open</span><strong id="month-open">0</strong></div><p class="legend-total" id="month-total">0 things tracked</p></div></div><p class="chart-caption">Daily activities and goals due or achieved in this month.</p></article>
+            <article class="panel month-insight"><span class="insight-flower">✳</span><p class="eyebrow">A MOMENT TO NOTICE</p><h2 id="month-insight-title">Your progress is taking shape.</h2><p id="month-insight-copy">Every effort you record is a step worth recognizing.</p><div class="insight-stat"><span>Goals achieved</span><strong id="month-goals-done">0</strong></div></article></div>
+          </section>
+          <section class="report-view" id="year-report"><div class="report-toolbar"><div><p class="eyebrow">YOUR YEARLY REPORT</p><h2 id="year-report-title"></h2></div><label class="select-wrap"><span class="sr-only">Choose report year</span><select id="year-picker"></select></label></div>
+            <section class="panel year-chart-panel"><div class="panel-heading"><div><p class="eyebrow">ACTIVITIES & MILESTONES</p><h2>Month by month</h2></div></div><div class="year-month-chart" id="year-month-chart" role="list" aria-label="Monthly completion rates"></div></section>
+            <div class="year-bottom-grid"><article class="panel year-total-panel"><div><p class="eyebrow">LOOK WHAT YOU DID</p><h2 id="year-total-count">0 things completed</h2><p id="year-total-copy">All those small steps belong to you.</p></div><span class="year-star">✳</span></article><article class="panel year-goals-panel"><p class="eyebrow">MILESTONES ACHIEVED</p><strong id="year-goals-count">0</strong><span>goals completed this year</span></article></div><p class="report-method">Each month shows completed activities and milestones out of the total tracked. A dash means no items were tracked.</p>
+          </section>
+        </section>
+        <footer class="page-footer">Made for the long game <span>✳</span></footer>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
